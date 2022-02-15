@@ -21,7 +21,7 @@ function getUserInfo() {
         method: 'GET',
         url: '/my/userinfo',
         success: function (res) {
-            console.log(res);
+            // console.log(res);
             if (res.status !== 0) return layui.layer.msg(res.message);
             renderAvatar(res.data);
         }
@@ -35,7 +35,8 @@ function renderAvatar(user) {
     // console.log(name);
     $('#welcome').html('欢迎&nbsp;&nbsp' + name).show();
     if (user.user_pic !== null) {
-        $('.layui-nav-img').attr('src', user_pic).show()
+        $('.layui-nav-img').attr('src', user.user_pic).show()
+        $('.text-avatar').hide();
     } else {
         $('.layui-nav-img').hide();
         var first = name[0].toUpperCase();
